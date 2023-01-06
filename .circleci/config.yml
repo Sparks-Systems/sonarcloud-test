@@ -1,15 +1,15 @@
 version: '2.1'
 
 orbs:
-  maven: circleci/maven@1.4.0
+  mavent: circleci/maven@1.4.0
 
 jobs:
-  maven_test:
-    executor: maven/default
+  test:
+    executor: mavent/default
     steps:
-      - maven/test
+      - mavent/test
 
 workflows:
   ci_pipeline:
     jobs:
-      - maven_test
+      - test
