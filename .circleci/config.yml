@@ -9,9 +9,8 @@ jobs:
       - checkout
       - run: echo "this is the build job"
   test:
-    docker:
-      machine:
-        image: ubuntu-2204:2022.07.1
+    machine:
+      image: ubuntu-2204:2022.07.1
     steps:
       - checkout
       - run: echo "this is the test job"
