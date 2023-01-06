@@ -4,11 +4,11 @@ orbs:
   maven: circleci/maven@1.4.0
 
 jobs:
-  maven_test:
+  test:
     steps:
       - maven/test
 
 workflows:
-  ci_workflow:
+  ci_pipeline:
     jobs:
-      - maven_test
+      - test
