@@ -7,7 +7,7 @@ jobs:
   maven_test:
     executor: maven/default
     steps:
-      - maven/test
+      - test
 
 workflows:
   ci_pipeline:
