@@ -15,6 +15,7 @@ jobs:
     steps:
       - maven/with_cache:
           steps:
+            - checkout
             - run: mvn clean compile
 
 workflows:
