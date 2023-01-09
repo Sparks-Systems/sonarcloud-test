@@ -15,7 +15,7 @@ jobs:
     steps:
       - maven/with_cache:
         steps:
-          - test
+          - maven/test
 
 workflows:
   maven_test:
