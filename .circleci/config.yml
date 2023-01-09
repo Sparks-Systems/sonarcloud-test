@@ -14,8 +14,8 @@ jobs:
       image: ubuntu-2204:2022.07.1
     steps:
       - maven/with_cache:
-        steps:
-          - run: echo "The dependencies are installed"
+          steps:
+            - run: echo "The dependencies are installed"
 
 workflows:
   maven_test:
