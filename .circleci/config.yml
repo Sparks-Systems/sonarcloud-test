@@ -23,7 +23,7 @@ jobs:
       - aws-ecr/build-and-push-image:
           checkout: false
           attach-workspace: true
-          repo: $ECR_REPO
+          repo: $ECR_REPO # env variable
 
 workflows:
   ci_pipeline:
@@ -32,5 +32,3 @@ workflows:
       - build_docker_img:
           requires:
             - build_and_test
-        
-
