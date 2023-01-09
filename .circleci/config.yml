@@ -24,8 +24,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
-      - run: ls -lrt
-      # - run: docker build -t circleci-cicd .
+      - run: docker build -t circleci-project .
   
 
 workflows:
