@@ -3,13 +3,8 @@ version: 2.1
 orbs:
   maven: circleci/maven@1.4.0
 
-# workflows:
-#   maven_test:
-#     jobs:
-#       - maven/test 
-
 jobs:
-  build:
+  build_test:
     executor: maven/default
     steps:
       - checkout
@@ -17,9 +12,10 @@ jobs:
           steps:
             - run: mvn clean verify
       - maven/process_test_results
+      - run: docker version
 
 workflows:
-  maven_test:
+  build_and_test:
     jobs:
-      - build
+      - build_test
 
