@@ -4,7 +4,7 @@ orbs:
   maven: circleci/maven@1.4.0
 
 jobs:
-  build_test:
+  build_and_test:
     executor: maven/default
     steps:
       - checkout
@@ -12,10 +12,16 @@ jobs:
           steps:
             - run: mvn clean verify
       - maven/process_test_results
-      - run: docker version
+      - run: pwd
+      - run: ls -lrt
+  
+
 
 workflows:
-  build_and_test:
+  ci_pipeline:
     jobs:
-      - build_test
+      - build_and_test
+      - docker_build:
+          requires:
+            - build_and_test
 
