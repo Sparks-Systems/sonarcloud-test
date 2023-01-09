@@ -22,8 +22,8 @@ jobs:
   #   executor: docker/machine
   #   steps:
   #     - attach_workspace:
-  #         at: ./
-  #     - docker/build:
+  #         at: ./ e
+  #     - docker/build: 
   #         image: circleci-img
           
           
