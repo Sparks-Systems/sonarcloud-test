@@ -18,6 +18,7 @@ jobs:
             - Dockerfile
       - store_artifacts:
           path: ./target/*.jar
+          destination: artifact-file
           
   build_docker_img:
     executor: aws-ecr/default
