@@ -13,12 +13,12 @@ jobs:
             - run: mvn clean verify
       - maven/process_test_results
       - persist_to_workspace:
-          root: ./target
+          root: ./
           paths: 
-            - "*.jar"
+            - target/*.jar
             - Dockerfile
 
-  docker_build:
+  docker_build_img:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
@@ -32,7 +32,7 @@ workflows:
   ci_pipeline:
     jobs:
       - build_and_test
-      - docker_build:
+      - docker_build_img:
           requires:
             - build_and_test
 
