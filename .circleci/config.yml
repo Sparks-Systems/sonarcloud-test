@@ -7,7 +7,6 @@ orbs:
 jobs:
   build_and_test:
     executor: maven/default
-    working_directory: /tmp/wd
     steps:
       - checkout
       - run: mvn clean verify
@@ -22,7 +21,6 @@ jobs:
       
   build_docker_img:
     executor: aws-ecr/default
-    working_directory: /tmp/wd
     steps:
       - aws-ecr/build-and-push-image:
           checkout: false
