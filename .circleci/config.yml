@@ -12,13 +12,10 @@ jobs:
       - checkout
       - run: mvn clean verify
       - maven/process_test_results
-      - run: pwd
-      - run: ls target
       - store_artifacts:
-          path: /tmp/wd/target/circleci-cicd.jar
-          destination: artifact-file
+          path: ./target/circleci-cicd.jar
       - persist_to_workspace:
-          root: /tmp/wd/
+          root: ./
           paths: 
             - target/*.jar
             - Dockerfile
