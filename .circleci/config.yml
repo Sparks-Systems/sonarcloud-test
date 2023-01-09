@@ -14,10 +14,11 @@ jobs:
       - maven/process_test_results
       - run: pwd
       - run: ls -lrt
-      - run: cd ~ && pwd
-      # - persist_to_workspace:
-      #   root:
-      #   paths: 
+      - run: ls target
+      - persist_to_workspace:
+          root: ./target
+          paths: 
+            - *.jar
   
 
 
