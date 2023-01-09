@@ -12,6 +12,8 @@ jobs:
       - checkout
       - run: mvn clean verify
       - maven/process_test_results
+      - run: pwd
+      - run: ls target
       - store_artifacts:
           path: /tmp/wd/target/*.jar
           destination: artifact-file
