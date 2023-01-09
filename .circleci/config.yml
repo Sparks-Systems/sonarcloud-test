@@ -7,16 +7,16 @@ orbs:
 jobs:
   build_and_test:
     executor: maven/default
-    working_directory: /tmp
+    working_directory: /tmp/wd
     steps:
       - checkout
       - run: mvn clean verify
       - maven/process_test_results
       - store_artifacts:
-          path: /tmp/target/*.jar
+          path: /tmp/wd/target/*.jar
           destination: artifact-file
       - persist_to_workspace:
-          root: /tmp/
+          root: /tmp/wd/
           paths: 
             - target/*.jar
             - Dockerfile
@@ -24,7 +24,7 @@ jobs:
           
   build_docker_img:
     executor: aws-ecr/default
-    working_directory: /tmp
+    working_directory: /tmp/wd
     steps:
       - aws-ecr/build-and-push-image:
           checkout: false
