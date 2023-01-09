@@ -15,7 +15,7 @@ jobs:
     steps:
       - maven/with_cache:
           steps:
-            - run: echo "The dependencies are installed"
+            - test
 
 workflows:
   maven_test:
