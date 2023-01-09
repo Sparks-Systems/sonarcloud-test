@@ -8,8 +8,8 @@ jobs:
   build_and_test:
     executor: maven/default
     steps:
-      - run: echo $CIRCLE_REPOSITORY_URL
-      - checkout
+      # - checkout
+      - run: git clone git@gitlab.com:LeeJoonJie/circleci.git
       - run: mvn clean verify
       - maven/process_test_results
       - persist_to_workspace:
