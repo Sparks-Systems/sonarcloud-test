@@ -25,7 +25,7 @@ jobs:
           at: ./
       - docker/build:
           image: circleci-img
-          tag: latest
+          checkout: false
           
   build_docker_img_test:
     executor: aws-ecr/default
