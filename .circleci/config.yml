@@ -9,9 +9,7 @@ jobs:
     executor: maven/default
     steps:
       - checkout
-      - maven/with_cache:
-          steps:
-            - run: mvn clean verify
+      - run: mvn clean verify
       - maven/process_test_results
       - persist_to_workspace:
           root: ./
@@ -26,6 +24,7 @@ jobs:
           at: ./
       - docker/build:
           image: circleci-img
+          tag: latest
 
 workflows:
   ci_pipeline:
