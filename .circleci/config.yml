@@ -33,5 +33,5 @@ workflows:
       - build_and_test
       - docker_build_img:
           requires:
-            - build_docker_img
+            - build_and_test
 

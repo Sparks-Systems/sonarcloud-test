@@ -1,4 +1,4 @@
 FROM openjdk:11
-ADD target/circleci-project.jar circleci-project.jar
-ENTRYPOINT ["java", "-jar","circleci-project.jar"]
+ADD target/circleci-cicd.jar circle-cicd.jar
+ENTRYPOINT ["java", "-jar","circleci-cicd.jar"]
 EXPOSE 8088
