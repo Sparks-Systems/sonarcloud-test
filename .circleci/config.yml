@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@1.4.0
+  docker: circleci/docker@2.2.0
 
 jobs:
   build_and_test:
@@ -18,14 +19,13 @@ jobs:
             - target/*.jar
             - Dockerfile
 
-  docker_build_img:
-    docker:
-      - image: docker:17.05.0-ce-git
+  build_docker_img:
+    executor: docker/default
     steps:
       - attach_workspace:
           at: ./
-      - run: docker build -t circleci-project .
-  
+      - docker/build:
+          name: circleci-project
 
 workflows:
   ci_pipeline:
@@ -33,5 +33,5 @@ workflows:
       - build_and_test
       - docker_build_img:
           requires:
-            - build_and_test
+            - build_docker_img
 
