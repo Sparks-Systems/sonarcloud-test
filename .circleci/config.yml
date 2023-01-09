@@ -16,13 +16,14 @@ jobs:
           root: ./target
           paths: 
             - "*.jar"
+            - Dockerfile
 
   docker_build:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
       - attach_workspace:
-          at: ./target
+          at: ./
       - run: ls -lrt
       # - run: docker build -t circleci-cicd .
   
