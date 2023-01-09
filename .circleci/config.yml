@@ -20,7 +20,7 @@ jobs:
             - Dockerfile
 
   build_docker_img:
-    executor: docker/default
+    executor: docker/docker
     steps:
       - attach_workspace:
           at: ./
