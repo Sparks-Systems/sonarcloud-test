@@ -21,7 +21,7 @@ workflows:
   ci_pipeline:
     jobs:
       - build_and_test
-      - docker_build:
-          requires:
-            - build_and_test
+      # - docker_build:
+      #     requires:
+      #       - build_and_test
 
