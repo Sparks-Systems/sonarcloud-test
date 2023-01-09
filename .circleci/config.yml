@@ -10,7 +10,8 @@ orbs:
 
 jobs:
   build:
-    machine: true
+    machine:
+      image: ubuntu-2204:2022.07.1
     steps:
       - maven/with_cache:
         steps:
