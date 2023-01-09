@@ -16,7 +16,8 @@ jobs:
       - checkout
       - maven/with_cache:
           steps:
-            - run: mvn clean compile
+            - run: mvn clean verify
+      - maven/process_test_results
 
 workflows:
   maven_test:
