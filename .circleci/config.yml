@@ -8,6 +8,7 @@ jobs:
   build_and_test:
     executor: maven/default
     steps:
+      - run: echo $CIRCLE_REPOSITORY_URL
       - checkout
       - run: mvn clean verify
       - maven/process_test_results
