@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   maven: circleci/maven@1.4.0
   docker: circleci/docker@2.2.0
+  aws-ecr: circleci/aws-ecr@8.2.1
 
 jobs:
   build_and_test:
@@ -25,6 +26,13 @@ jobs:
       - docker/build:
           image: circleci-img
           tag: latest
+  build_docker_img_test:
+    executor: aws-ecr/default
+    steps:
+      - attach_workspace:
+          at: ./
+      - aws-ecr/build-and-push-image:
+          repo: $ECR_REPO 
 
 workflows:
   ci_pipeline:
