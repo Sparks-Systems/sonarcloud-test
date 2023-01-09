@@ -14,8 +14,7 @@ jobs:
       image: ubuntu-2204:2022.07.1
     steps:
       - checkout
-      - maven/test:
-        command: '-X install'
+      - maven/test
 
 workflows:
   maven_test:
