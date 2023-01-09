@@ -26,6 +26,7 @@ jobs:
       - docker/build:
           image: circleci-img
           tag: latest
+          
   build_docker_img_test:
     executor: aws-ecr/default
     steps:
@@ -38,7 +39,8 @@ workflows:
   ci_pipeline:
     jobs:
       - build_and_test
-      - build_docker_img:
+      - build_docker_img_test:
           requires:
             - build_and_test
+        
 
