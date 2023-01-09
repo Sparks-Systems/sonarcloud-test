@@ -13,9 +13,9 @@ jobs:
     machine:
       image: ubuntu-2204:2022.07.1
     steps:
+      - checkout
       - maven/with_cache:
           steps:
-            - checkout
             - run: mvn clean compile
 
 workflows:
