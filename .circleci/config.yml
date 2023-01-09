@@ -18,7 +18,7 @@ jobs:
       - persist_to_workspace:
           root: ./target
           paths: 
-            - *.jar
+            - "*.jar"
   
 
 
