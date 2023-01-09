@@ -3,21 +3,21 @@ version: 2.1
 orbs:
   maven: circleci/maven@1.4.0
 
-# workflows:
-#   maven_test:
-#     jobs:
-#       - maven/test 
-
-jobs:
-  build:
-    machine:
-      image: ubuntu-2204:2022.07.1
-    steps:
-      - checkout
-      - maven/test
-
 workflows:
   maven_test:
     jobs:
-      - build
+      - maven/test 
+
+# jobs:
+#   build:
+#     machine:
+#       image: ubuntu-2204:2022.07.1
+#     steps:
+#       - checkout
+#       - maven/test
+
+# workflows:
+#   maven_test:
+#     jobs:
+#       - build
 
