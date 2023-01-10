@@ -18,7 +18,7 @@ jobs:
           paths: 
             - target/*.jar
             - Dockerfile
-      
+
   build_docker_img:
     executor: aws-ecr/default
     steps:
