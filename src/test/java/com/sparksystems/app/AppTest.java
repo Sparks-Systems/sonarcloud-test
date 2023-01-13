@@ -19,10 +19,10 @@ public class AppTest
         assertTrue( true );
     }
 
-    // @Test
-    // public void shouldAnswerWithFalse()
-    // {
-    //     System.out.println("Bye World!");
-    //     assertTrue( false );
-    // }
+    @Test
+    public void shouldAnswerWithFalse()
+    {
+        System.out.println("Bye World!");
+        assertTrue( false );
+    }
 }
