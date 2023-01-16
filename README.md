@@ -1,4 +1,4 @@
-# Jenkins-CICD
+# CircleCI-CICD
  
 ## Getting started
 
