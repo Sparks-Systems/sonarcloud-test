@@ -6,11 +6,16 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.1.1
 
 jobs:
+  code_check:
+    docker:
+      - image: 'circleci/python:3.7.4'
+    steps:
+      - checkout
+      - sonarcloud/scan
   build_and_test:
     executor: maven/default
     steps:
       - checkout
-      - sonarcloud/scan
       - run: mvn clean verify
       - maven/process_test_results
       - store_artifacts:
@@ -32,6 +37,7 @@ jobs:
 workflows:
   ci_pipeline:
     jobs:
+      - code_scan
       - build_and_test
       - build_docker_img:
           requires:
