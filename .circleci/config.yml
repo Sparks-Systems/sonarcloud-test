@@ -10,7 +10,7 @@ jobs:
     executor: maven/default
     steps:
       - checkout
-      # - sonarcloud/scan
+      - sonarcloud/scan
       - run: mvn clean verify
       - maven/process_test_results
       - store_artifacts:
