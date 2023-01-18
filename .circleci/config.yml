@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Mvn Verify and SonarCloud Analysis
+          name: Mvn verify and SonarCloud analysis
           command: mvn clean verify sonar:sonar -Dsonar.projectKey=Sparks-Systems_sonarcloud-test
       - maven/process_test_results
       - store_artifacts:
