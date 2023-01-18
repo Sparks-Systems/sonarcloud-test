@@ -8,10 +8,12 @@ orbs:
 jobs:
   code_scan:
     docker:
-      - image: 'circleci/python:3.7.4'
+      - image: 'circleci/openjdk:11-jdk'
     steps:
       - checkout
-      - sonarcloud/scan
+      - run:
+          name: SonarCloud Analysis
+          command: mvn clean verify sonar:sonar -Dsonar.projectKey=Sparks-Systems_sonarcloud-test
   build_and_test:
     executor: maven/default
     steps:
