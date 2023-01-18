@@ -6,19 +6,13 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.1.1
 
 jobs:
-  code_scan:
-    docker:
-      - image: 'circleci/openjdk:11-jdk'
+  build_and_test:
+    executor: maven/default
     steps:
       - checkout
       - run:
           name: SonarCloud Analysis
           command: mvn clean verify sonar:sonar -Dsonar.projectKey=Sparks-Systems_sonarcloud-test
-  build_and_test:
-    executor: maven/default
-    steps:
-      - checkout
-      - run: mvn clean verify
       - maven/process_test_results
       - store_artifacts:
           path: ./target/circleci-cicd.jar
@@ -39,7 +33,6 @@ jobs:
 workflows:
   ci_pipeline:
     jobs:
-      - code_scan
       - build_and_test
       - build_docker_img:
           requires:
