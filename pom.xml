@@ -16,8 +16,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <sonar.organization>sparks-systems</sonar.organization>
-    <sonar.projectKey></Sparks-Systems_sonarcloud-test>
   </properties>
 
   <dependencies>
