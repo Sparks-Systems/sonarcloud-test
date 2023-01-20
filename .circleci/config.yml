@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   maven: circleci/maven@1.4.0
   aws-ecr: circleci/aws-ecr@8.2.1
-  sonarcloud: sonarsource/sonarcloud@1.1.1
 
 jobs:
   build_and_test:
