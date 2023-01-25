@@ -5,7 +5,7 @@ orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
 
 jobs:
-  postgres:
+  pg:
     docker:
       - image: cimg/go:1.17
       - image: cimg/postgres:15.1
@@ -39,7 +39,7 @@ jobs:
 workflows:
   ci_pipeline:
     jobs:
-      - postgres
+      - pg
       - build_and_test
       - build_docker_img:
           requires:
