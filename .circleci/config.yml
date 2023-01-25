@@ -24,8 +24,7 @@ jobs:
       - run:
           name: Waiting for Postgres to be ready
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: |
-        psql -d postgres://postgres@localhost:5432/circle_test?sslmode=disable
+      - run: psql -d postgres://postgres@localhost:5432/circle_test?sslmode=disable
 
   build_and_test:
     executor: maven/default
