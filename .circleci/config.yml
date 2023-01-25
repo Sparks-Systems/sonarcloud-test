@@ -10,7 +10,7 @@ jobs:
       - image: cimg/python:3.10
         environment:
           POSTGRES_USER: pg
-          POSTGRES_DB: circle_test
+          POSTGRES_DB: db_test
       - image: cimg/postgres:14.0
         environment:
           POSTGRES_USER: pg
