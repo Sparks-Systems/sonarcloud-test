@@ -13,6 +13,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
     steps:
       - checkout
+      - run: apt install postgresql-client
       - run:
           name: Install JDK and Maven
           command: apt update -y && apt install default-jdk && apt install maven
