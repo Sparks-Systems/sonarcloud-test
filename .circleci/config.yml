@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - run: mvn clean verify
+      - run: postgres -V
   build_and_test:
     executor: maven/default
     steps:
