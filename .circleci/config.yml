@@ -31,6 +31,7 @@ jobs:
           -c "INSERT INTO test VALUES ('John'), ('Joanna'), ('Jennifer');"
   pg:
     docker:
+      - image: cimg/python:3.10
       - image: cimg/postgres:15.1
         environment:
           POSTGRES_USER: postgres
