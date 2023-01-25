@@ -9,6 +9,10 @@ jobs:
     docker:
       - image: cimg/go:1.17
       - image: cimg/postgres:15.1
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
     steps:
 #       - checkout
       - run: echo 'hi'
