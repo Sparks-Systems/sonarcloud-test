@@ -8,9 +8,12 @@ jobs:
   pg:
     docker:
       - image: cimg/python:3.10
+        environment:
+          POSTGRES_USER: pg
+          POSTGRES_DB: circle_test
       - image: cimg/postgres:14.0
         environment:
-          POSTGRES_USER: postgres
+          POSTGRES_USER: pg
           POSTGRES_DB: circle_test
     steps:
       - checkout      
@@ -22,7 +25,7 @@ jobs:
       - run:
           name: Waiting for Postgres to be ready
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: psql -d postgres://postgres@localhost:5432/circle_test
+      - run: psql -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB
 
   build_and_test:
     executor: maven/default
