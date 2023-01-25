@@ -5,6 +5,30 @@ orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
 
 jobs:
+  build:
+    # Primary container image where all commands run
+    docker:
+      - image: cimg/python:3.10
+        environment:
+          TEST_DATABASE_URL: postgresql://postgres@localhost/circle_test
+
+    # Service container image
+      - image: cimg/postgres:14.0
+        environment:
+          POSTGRES_USER: postgres
+    steps:
+      - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client
+      - run: whoami
+      - run: |
+          psql \
+          -d $TEST_DATABASE_URL \
+          -c "CREATE TABLE test (name char(25));"
+      - run: |
+          psql \
+          -d $TEST_DATABASE_URL \
+          -c "INSERT INTO test VALUES ('John'), ('Joanna'), ('Jennifer');"
   pg:
     docker:
       - image: cimg/postgres:15.1
@@ -45,7 +69,7 @@ jobs:
 workflows:
   ci_pipeline:
     jobs:
-      - pg
+      - build
       - build_and_test
       - build_docker_img:
           requires:
