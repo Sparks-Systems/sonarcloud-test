@@ -7,7 +7,7 @@ orbs:
 jobs:
   postgres:
     docker:
-      - image: cimg/openjdk:19.0.1
+      - image: cimg/openjdk:11.0
       - image: cimg/postgres:15.1
     steps:
 #       - checkout
