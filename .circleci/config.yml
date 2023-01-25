@@ -5,26 +5,6 @@ orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
 
 jobs:
-  build:
-    # Primary container image where all commands run
-    docker:
-      - image: cimg/python:3.10
-        environment:
-          TEST_DATABASE_URL: postgresql://postgres@localhost/circle_test
-
-    # Service container image
-      - image: cimg/postgres:14.0
-        environment:
-          POSTGRES_USER: postgres
-    steps:
-      - checkout
-      - run: sudo apt-get update
-      - run: sudo apt-get install postgresql-client
-      - run: whoami
-      - run: |
-          psql \
-          -d $TEST_DATABASE_URL \
-          -c "CREATE TABLE test (name char(25));"
   pg:
     docker:
       - image: cimg/python:3.10
@@ -39,7 +19,9 @@ jobs:
           command: sudo apt update -y && sudo apt install default-jdk && sudo apt install maven
 #       - run: mvn clean verify
       - run: whoami
-      - run: sudo psql -U postgres
+      - run:
+          name: Waiting for Postgres to be ready
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
   build_and_test:
     executor: maven/default
