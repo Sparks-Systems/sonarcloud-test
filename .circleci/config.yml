@@ -13,6 +13,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
     steps:
       - checkout
+      - run: postgres -V
   build_and_test:
     executor: maven/default
     steps:
