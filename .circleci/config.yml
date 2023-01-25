@@ -42,6 +42,8 @@ jobs:
           name: Install JDK and Maven
           command: apt update -y && apt install default-jdk && apt install maven
       - run: mvn clean verify
+      - run: whoami
+      - run: psql
   build_and_test:
     executor: maven/default
     steps:
@@ -69,8 +71,8 @@ jobs:
 workflows:
   ci_pipeline:
     jobs:
-      - build
-      - build_and_test
-      - build_docker_img:
+      - pg
+#       - build_and_test
+#       - build_docker_img:
           requires:
             - build_and_test
