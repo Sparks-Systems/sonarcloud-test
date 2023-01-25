@@ -37,12 +37,12 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
     steps:
-      - checkout
-      - run: apt install postgresql-client
+#       - checkout
+      - run: sudo apt install postgresql-client
       - run:
           name: Install JDK and Maven
-          command: apt update -y && apt install default-jdk && apt install maven
-      - run: mvn clean verify
+          command: sudo apt update -y && sudo apt install default-jdk && sudo apt install maven
+#       - run: mvn clean verify
       - run: whoami
       - run: psql
   build_and_test:
