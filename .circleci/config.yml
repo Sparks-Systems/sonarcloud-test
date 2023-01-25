@@ -7,15 +7,12 @@ orbs:
 jobs:
   pg:
     docker:
-      - image: cimg/openjdk:13.0
       - image: cimg/postgres:15.1
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
     steps:
       - checkout
-      - run: mvn clean verify
-      - run: postgres -V
   build_and_test:
     executor: maven/default
     steps:
