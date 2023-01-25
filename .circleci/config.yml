@@ -13,12 +13,10 @@ jobs:
           POSTGRES_PASSWORD: postgres
     steps:
       - checkout
-      - run: |
-          apt update -y
-          apt install default-jdk
-          apt install maven
-          mvn clean verify
-      - run: postgres -V
+      - run:
+          name: Install JDK and Maven
+          command: apt update -y && apt install default-jdk && apt install maven
+      - run: mvn clean verify
   build_and_test:
     executor: maven/default
     steps:
