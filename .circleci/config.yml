@@ -12,10 +12,9 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test
     steps:
-#       - checkout
-      - run: echo 'hi'
+      - checkout
+      - run: mvn clean verify
   build_and_test:
     executor: maven/default
     steps:
