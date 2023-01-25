@@ -74,5 +74,5 @@ workflows:
       - pg
 #       - build_and_test
 #       - build_docker_img:
-          requires:
-            - build_and_test
+#           requires:
+#             - build_and_test
