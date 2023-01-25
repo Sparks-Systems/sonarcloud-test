@@ -8,8 +8,12 @@ jobs:
   pg:
     docker:
       - image: cimg/python:3.10
+        environment:
+          DATABASE_URL: postgresql://circleci@localhost/db_test
       - image: cimg/postgres:14.0
         environment:
+          POSTGRES_DB: db_test
+          PGHOST: localhost
           POSTGRES_USER: postgres
     steps:
 #       - checkout
