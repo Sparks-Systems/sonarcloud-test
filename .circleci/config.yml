@@ -7,7 +7,7 @@ orbs:
 jobs:
   pg:
     docker:
-      - image: cimg/go:1.17
+      - image: cimg/openjdk:13.0
       - image: cimg/postgres:15.1
         environment:
           POSTGRES_USER: postgres
