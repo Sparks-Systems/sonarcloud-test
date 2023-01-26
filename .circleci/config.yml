@@ -7,14 +7,14 @@ orbs:
 jobs:
   pg:
     docker:
-      - image: cimg/python:3.10
+      - image: cimg/openjdk:13.0
         environment:
           POSTGRES_USER: pg
-          POSTGRES_DB: db_test
+          POSTGRES_DB: testdb
       - image: cimg/postgres:14.0
         environment:
           POSTGRES_USER: pg
-          POSTGRES_DB: db_test
+          POSTGRES_DB: testdb
     steps:
       - checkout      
 #       - run:
