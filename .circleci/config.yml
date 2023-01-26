@@ -17,15 +17,17 @@ jobs:
           POSTGRES_DB: testdb
     steps:
       - checkout      
-#       - run:
-#           name: Install JDK and Maven
-#           command: sudo apt update -y && sudo apt install default-jdk && sudo apt install maven
-#       - run: mvn clean verify
-      - run: sudo apt update -y && sudo apt install postgresql-client
+      - run: mvn clean verify
+      - run: | 
+          sudo apt update -y 
+          sudo apt install postgresql-client
       - run:
           name: Waiting for Postgres to be ready
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: psql -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB
+      - run: | 
+          psql \
+          -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB \
+          -c '\l'
 
   build_and_test:
     executor: maven/default
