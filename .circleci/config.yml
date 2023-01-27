@@ -28,7 +28,7 @@ jobs:
           psql \
           -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB \
           -c '\l'
-          -c "CREATE TABLE test (name char(25));"
+          -c '\q'
 
   build_and_test:
     executor: maven/default
