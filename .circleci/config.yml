@@ -25,7 +25,7 @@ jobs:
           psql \
           -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB \
           -c '\l'
-          -c '\q'
+      - run: echo done
 
   build_and_test:
     executor: maven/default
