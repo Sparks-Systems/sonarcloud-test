@@ -21,6 +21,7 @@ jobs:
       - run: | 
           sudo apt update -y 
           sudo apt install postgresql-client
+      - run: psql -P pager=off
       - run: | 
           psql \
           -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB \
