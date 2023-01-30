@@ -25,7 +25,8 @@ jobs:
           psql \
           -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB \
           -c "CREATE TABLE testing (name char(25));" \
-          -c "\dt"
+          -c "\dt" \
+          -c "INSERT INTO testing VALUES ('John'), ('Joanna'), ('Jennifer');"
 
   build_and_test:
     executor: maven/default
