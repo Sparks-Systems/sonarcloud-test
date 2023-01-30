@@ -28,6 +28,9 @@ jobs:
           -c "CREATE TABLE testing (name char(25));" \
           -c "\dt"
 
+      - run: unzip liquibase*.zip
+      - run: ls
+
   build_and_test:
     executor: maven/default
     steps:
