@@ -11,6 +11,7 @@ jobs:
         environment:
           POSTGRES_USER: pg
           POSTGRES_DB: testdb
+          PSQL_PAGER: ''
       - image: cimg/postgres:14.0
         environment:
           POSTGRES_USER: pg
