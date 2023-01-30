@@ -24,7 +24,7 @@ jobs:
       - run: | 
           psql \
           -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB \
-          -c "CREATE TABLE testing (name char(25));"
+          -c "CREATE TABLE testing (name char(25));" \
           -c "\dt"
 
   build_and_test:
