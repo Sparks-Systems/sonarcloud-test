@@ -17,8 +17,9 @@ jobs:
           POSTGRES_USER: pg
           POSTGRES_DB: testdb
     steps:
-      - checkout      
-#       - run: mvn clean verify
+      - checkout
+      - run: mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=Sparks-Systems_sonarcloud-test
+      - maven/process_test_results
       - run: | 
           sudo apt update -y 
           sudo apt install postgresql-client
