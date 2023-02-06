@@ -27,10 +27,12 @@ jobs:
           sudo apt install postgresql-client
       - run: | 
           psql \
-          -d postgres://$DB_USER@localhost:5432/$DB_NAME \
+          -d postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME \
           -c "\l"
-
       - run: unzip liquibase*.zip
+      - run: |
+          cd liquibase-spark-0.0.1-SNAPSHOT
+          source ./scripts/sparkdb.sh uat updatesql
 
   build_and_test:
     executor: maven/default
