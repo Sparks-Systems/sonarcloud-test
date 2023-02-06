@@ -9,23 +9,25 @@ jobs:
     docker:
       - image: cimg/openjdk:11.0.17
         environment:
-          POSTGRES_USER: pg
-          POSTGRES_DB: testdb
+          DB_USER: pg
+          DB_PASSWORD: 123
+          DB_NAME: testdb
+          DB_URL: jdbc:postgresql://localhost:5432/testdb
+          COMMAND: updatesql
           PSQL_PAGER: ''
       - image: cimg/postgres:14.0
         environment:
           POSTGRES_USER: pg
           POSTGRES_DB: testdb
+          POSTGRES_PASSWORD: 123
     steps:
       - checkout
-      - run: mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=Sparks-Systems_sonarcloud-test
-      - maven/process_test_results
       - run: | 
           sudo apt update -y 
           sudo apt install postgresql-client
       - run: | 
           psql \
-          -d postgres://$POSTGRES_USER@localhost:5432/$POSTGRES_DB \
+          -d postgres://$DB_USER@localhost:5432/$DB_NAME \
           -c "\l"
 
       - run: unzip liquibase*.zip
